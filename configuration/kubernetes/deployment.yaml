@@ -2,15 +2,15 @@ apiVersion: apps/v1  #extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    app: currency-exchange
-  name: currency-exchange
+    app: hello-world-python
+  name: hello-world-python
   namespace: default
 spec:
   replicas: 1 #CHANGE
   minReadySeconds: 45
   selector:
     matchLabels:
-      app: currency-exchange
+      app: hello-world-python
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -19,15 +19,15 @@ spec:
   template:
     metadata:
       labels:
-        app: currency-exchange
+        app: hello-world-python
     spec:
       containers:
-      - name: currency-exchange
-        image: harsh2013/currency-exchange-devops
+      - name: hello-world-python
+        image: harsh2013/hello-world-python
         imagePullPolicy: IfNotPresent
         ports:
         - name: liveness-port
-          containerPort: 8000
+          containerPort: 5000
         resources: #CHANGE
           requests:
             cpu: 100m
@@ -56,16 +56,16 @@ apiVersion: v1  #v1
 kind: Service
 metadata:
   labels: #PODS
-    app: currency-exchange
-  name: currency-exchange
+    app: hello-world-python
+  name: hello-world-python
   namespace: default
 spec:
   ports:
   - # nodePort: 30702 #CHANGE
-    port: 8000 #CHANGE
+    port: 5000 #CHANGE
     protocol: TCP
-    targetPort: 8000 #CHANGE
+    targetPort: 5000 #CHANGE
   selector:
-    app: currency-exchange
+    app: hello-world-python
   sessionAffinity: None #CHANGE
   type: LoadBalancer
