@@ -20,7 +20,7 @@ stages:
       displayName: Build an image
       inputs:
         containerRegistry: 'harsh2013-docker-hub'
-        repository: 'harsh2013/recipe-app-api'
+        repository: 'harsh2013/hello-world-python'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: '$(tag)'
