@@ -9,22 +9,22 @@ variables:
 #'$(Build.BuildId)'
 
 stages:
-# - stage: Build
-#   displayName: Build image
-#   jobs:  
-#   - job: Build
-#     displayName: Build
-#     pool:
-#       vmImage: 'ubuntu-latest'
-#     steps:
-#     - task: Docker@2
-#       displayName: Build an image
-#       inputs:
-#         containerRegistry: 'my-dockerhub-connection'
-#         repository: 'harsh2013/hello-world-python'
-#         command: 'buildAndPush'
-#         Dockerfile: '**/Dockerfile'
-#         tags: '$(tag)'
+- stage: Build
+  displayName: Build image
+  jobs:  
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    # - task: Docker@2
+    #   displayName: Build an image
+    #   inputs:
+    #     containerRegistry: 'my-dockerhub-connection'
+    #     repository: 'harsh2013/hello-world-python'
+    #     command: 'buildAndPush'
+    #     Dockerfile: '**/Dockerfile'
+    #     tags: '$(tag)'
 
     - task: CopyFiles@2
       inputs:
