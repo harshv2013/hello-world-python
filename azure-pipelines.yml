@@ -54,13 +54,13 @@ stages:
         itemPattern: '**/*'
         targetPath: '$(System.ArtifactsDirectory)'
 
-    # - task: KubernetesManifest@0
-    #   inputs:
-    #     action: 'deploy'
-    #     kubernetesServiceConnection: 'azure-kubernetes-connection'
-    #     namespace: 'default'
-    #     manifests: '$(System.ArtifactsDirectory)/configuration/kubernetes/deployment.yaml'
-    #     containers: 'harsh2013/recipe-app-api:$(tag)'
 
+    - task: KubernetesManifest@0
+      inputs:
+        action: 'deploy'
+        kubernetesServiceConnection: 'azure-kubernetes-connection'
+        namespace: 'default'
+        manifests: '$(System.ArtifactsDirectory)/configuration/kubernetes/deployment.yaml'
+        containers: 'harsh2013/hello-world-python:$(tag)'
 
 
